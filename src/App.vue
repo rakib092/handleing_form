@@ -1,26 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+   <div class="container my-3">
+       <button @click="componentToRender='CompHome'">Home</button>
+       <button @click="componentToRender='CompAbout'">About</button>
+       <button @click="componentToRender='CompContact'">Contact</button>
+      
+       <keep-alive>
+        <component :is="componentToRender"></component>
+       </keep-alive>
+   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import CompHome from './components/Home_page';
+import CompAbout from './components/About_us';
+import CompContact from './components/Contact_us';
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+   data() {
+     return {
+        componentToRender:'CompContact',
+     }
+   },
+   components:{
+      CompHome,
+      CompAbout,
+      CompContact,
+   },
+  
+  
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
